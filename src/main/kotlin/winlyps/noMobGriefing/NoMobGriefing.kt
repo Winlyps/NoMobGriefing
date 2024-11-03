@@ -14,6 +14,9 @@ class NoMobGriefing : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoMobGriefing plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("mobGriefing", "true")
+            logger.info("NoMobGriefing plugin has been disabled.")
+        }
     }
 }
